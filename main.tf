@@ -1,8 +1,3 @@
-provider "azurerm" {
-  features {}
-  subscription_id = "365392ff-b101-4c74-a710-17152ad08a96"
-}
-
 module "resource_group" {
   source = "./modules/resource_group"
   name = var.resource_group_name
