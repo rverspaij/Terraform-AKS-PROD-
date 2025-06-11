@@ -18,7 +18,6 @@ jobs:
         
       - name: Terraform Apply
         run: |
-          cd terraform-infra
           terraform init
           terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"
 
