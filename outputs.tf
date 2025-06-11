@@ -8,7 +8,7 @@ output "acr_login_server" {
   value = module.acr.login_server
 }
 
-output "keyvault_name" {
-  description = "Key Vault name"
-  value = module.keyvault.name
-}
+# output "keyvault_name" {
+#   description = "Key Vault name"
+#   value = module.keyvault.name
+# }
