@@ -4,25 +4,25 @@ on:
   push:
     branches: [main]
 
-jobs:
-  terraform:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+# jobs:
+#   terraform:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v3
     
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+#       - name: Azure Login
+#         uses: azure/login@v1
+#         with:
+#           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v2
         
-      - name: Terraform Apply
-        run: |
-          terraform init
-          terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"
+#       - name: Terraform Apply
+#         run: |
+#           terraform init
+#           terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"
 
   deploy-argocd:
     needs: terraform
@@ -37,6 +37,9 @@ jobs:
         uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
       
       - name: Get AKS credentials
         run: |
