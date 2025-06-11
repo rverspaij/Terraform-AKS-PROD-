@@ -25,7 +25,7 @@ jobs:
 #           terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"
 
   deploy-argocd:
-    needs: terraform
+    # needs: terraform
     runs-on: ubuntu-latest
     steps:
       - name: Azure Login
