@@ -53,6 +53,5 @@ jobs:
 
       - name: Apply root ArgoCD app
         run: |
-          pwd
-          ls -R
-          kubectl apply -f environments/dev/root-application.yaml
+          cd environments/dev          
+          kubectl apply -f root-application.yaml
