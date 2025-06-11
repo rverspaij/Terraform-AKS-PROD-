@@ -52,4 +52,7 @@ jobs:
           kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
       - name: Apply root ArgoCD app
-        run: kubectl apply -f environments/dev/root-application.yaml
+        run: |
+          pwd
+          ls -R
+          kubectl apply -f environments/dev/root-application.yaml
