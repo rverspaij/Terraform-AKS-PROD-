@@ -3,20 +3,18 @@ kind: Application
 metadata:
   name: root-app
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/rverspaij/ArgoCD-PROD-.git
     targetRevision: HEAD
-    path: bootstrap
+    path: bootstrap       # 👈 map waar auth-application.yaml, chat-application.yaml etc. staan
+    directory:
+      recurse: true       # 👈 zorgt dat alle YAML-bestanden binnen de map als losse apps gezien worden
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argocd
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
-    syncOptions:
-      - CreateNamespace=true
