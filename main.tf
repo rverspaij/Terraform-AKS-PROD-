@@ -40,14 +40,14 @@ module "acr" {
   tags = var.tags
 }
 
-module "keyvault" {
-  source = "./modules/keyvault"
-  name = var.keyvault_name
-  location = var.location
-  resource_group_name = module.resource_group.name
-  tenant_id = var.tenant_id
-  tags = var.tags
-}
+# module "keyvault" {
+#   source = "./modules/keyvault"
+#   name = var.keyvault_name
+#   location = var.location
+#   resource_group_name = module.resource_group.name
+#   tenant_id = var.tenant_id
+#   tags = var.tags
+# }
 
 resource "azurerm_role_assignment" "aks_acr_pull" {
   scope = module.acr.id
@@ -55,8 +55,8 @@ resource "azurerm_role_assignment" "aks_acr_pull" {
   principal_id = module.aks.identity_principal_id
 }
 
-resource "azurerm_role_assignment" "aks_keyvault_access" {
-  scope = module.keyvault.id
-  role_definition_name = "Key Vault Secrets User"
-  principal_id = module.aks.identity_principal_id
-}
+# resource "azurerm_role_assignment" "aks_keyvault_access" {
+#   scope = module.keyvault.id
+#   role_definition_name = "Key Vault Secrets User"
+#   principal_id = module.aks.identity_principal_id
+# }
