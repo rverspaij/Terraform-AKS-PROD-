@@ -30,15 +30,15 @@ module "aks" {
   tags = var.tags
 }
 
-module "acr" {
-  source = "./modules/acr"
-  name = var.acr_name
-  location = var.location
-  resource_group_name = module.resource_group.name
-  sku = var.acr_sku
-  admin_enabled = false
-  tags = var.tags
-}
+# module "acr" {
+#   source = "./modules/acr"
+#   name = var.acr_name
+#   location = var.location
+#   resource_group_name = module.resource_group.name
+#   sku = var.acr_sku
+#   admin_enabled = false
+#   tags = var.tags
+# }
 
 # module "keyvault" {
 #   source = "./modules/keyvault"
