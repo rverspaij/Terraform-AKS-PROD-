@@ -49,11 +49,11 @@ module "aks" {
 #   tags = var.tags
 # }
 
-resource "azurerm_role_assignment" "aks_acr_pull" {
-  scope = module.acr.id
-  role_definition_name = "AcrPull"
-  principal_id = module.aks.identity_principal_id
-}
+# resource "azurerm_role_assignment" "aks_acr_pull" {
+#   scope = module.acr.id
+#   role_definition_name = "AcrPull"
+#   principal_id = module.aks.identity_principal_id
+# }
 
 # resource "azurerm_role_assignment" "aks_keyvault_access" {
 #   scope = module.keyvault.id
